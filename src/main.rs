@@ -2,6 +2,7 @@ fn main() {
     let aya = Person::new(
         String::from("Aya Mokoko"),
         22 as i8,
+        Genre::FEMALE,
         String::from("Manager"),
         Address::new(
             "25 st-green".to_string(),
@@ -28,16 +29,23 @@ impl Address {
 }
 
 #[derive(Debug)]
+enum Genre {
+    FEMALE,
+    MALE,
+}
+
+#[derive(Debug)]
 struct Person {
     name: String,
     age: i8,
+    genre: Genre,
     occupation: String,
     address: Address,
 }
 
 impl Person {
-    fn new(name: String, age: i8, occupation: String, address: Address) -> Person {
-        Person { name, age, occupation, address }
+    fn new(name: String, age: i8, genre: Genre, occupation: String, address: Address) -> Person {
+        Person { name, age, genre, occupation, address }
     }
     fn is_adult(&self) -> bool { self.age >= 18 }
 }
